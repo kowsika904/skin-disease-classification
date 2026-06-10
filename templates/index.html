@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DermAI - Skin Disease AI System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* Glow background */
+body::before{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#4F46E5;
+    filter:blur(160px);
+    top:-150px;
+    left:-150px;
+    opacity:0.4;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#06B6D4;
+    filter:blur(160px);
+    bottom:-150px;
+    right:-150px;
+    opacity:0.4;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    position:relative;
+    z-index:10;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 0;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:700;
+    color:#06B6D4;
+}
+
+.nav-links a{
+    color:#cbd5e1;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.nav-links a:hover{
+    color:#06B6D4;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    margin-top:30px;
+}
+
+.hero h1{
+    font-size:48px;
+}
+
+.hero span{
+    background:linear-gradient(90deg,#4F46E5,#06B6D4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:10px;
+    color:#94a3b8;
+    max-width:750px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/* STATS */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    margin-top:40px;
+}
+
+.card{
+    background:rgba(255,255,255,0.06);
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+/* UPLOAD */
+.upload{
+    margin-top:50px;
+    display:flex;
+    justify-content:center;
+}
+
+.upload-box{
+    width:100%;
+    max-width:650px;
+    background:rgba(255,255,255,0.06);
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+input[type=file]{
+    width:100%;
+    padding:18px;
+    border:2px dashed #06B6D4;
+    border-radius:12px;
+    color:white;
+    background:transparent;
+}
+
+.btn{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-weight:600;
+    cursor:pointer;
+    background:linear-gradient(90deg,#4F46E5,#06B6D4);
+    color:white;
+}
+
+/* RESULT */
+.result{
+    margin-top:40px;
+    background:rgba(255,255,255,0.06);
+    padding:30px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.main-result{
+    font-size:28px;
+    font-weight:700;
+    color:#06B6D4;
+    margin-bottom:10px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:20px;
+    background:rgba(6,182,212,0.15);
+    border:1px solid rgba(6,182,212,0.3);
+    margin-top:10px;
+}
+
+.analysis{
+    margin-top:25px;
+    text-align:left;
+}
+
+.row{
+    margin-bottom:15px;
+}
+
+.bar-bg{
+    width:100%;
+    height:12px;
+    background:#1e293b;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.bar-fill{
+    height:100%;
+    background:linear-gradient(90deg,#4F46E5,#06B6D4);
+}
+
+/* FOOTER */
+.footer{
+    text-align:center;
+    margin-top:50px;
+    padding:20px;
+    color:#94a3b8;
+}
+
+@media(max-width:768px){
+.hero h1{font-size:32px;}
+.navbar{flex-direction:column;}
+.nav-links{margin-top:10px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- NAV -->
+    <div class="navbar">
+        <div class="logo">🩺 DermAI</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Predict</a>
+            <a href="#">About</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1><span>AI Powered</span> Skin Disease Detection</h1>
+        <p>Deep Learning CNN model trained on HAM10000 dataset for early skin disease detection.</p>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="card"><h3>10K+</h3><p>Images</p></div>
+        <div class="card"><h3>7</h3><p>Classes</p></div>
+        <div class="card"><h3>AI</h3><p>Model</p></div>
+        <div class="card"><h3>Fast</h3><p>Prediction</p></div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div class="upload">
+        <div class="upload-box">
+
+            <h2>Upload Skin Image</h2>
+
+            <form action="/predict" method="POST" enctype="multipart/form-data">
+
+                <input type="file" name="image" required>
+
+                <button class="btn">Analyze</button>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- RESULT -->
+    {% if prediction %}
+
+    <div class="result">
+
+        <div class="main-result">
+            {{ prediction }}
+        </div>
+
+        <div class="badge">
+            Confidence: {{ confidence }}%
+        </div>
+
+        <p style="margin-top:10px;color:#cbd5e1;">
+            Status: <b>{{ severity }}</b>
+        </p>
+
+        <h3 style="margin-top:20px;color:#06B6D4;">
+            Prediction Breakdown
+        </h3>
+
+        <div class="analysis">
+
+            {% for item in results %}
+
+            <div class="row">
+
+                <div style="display:flex;justify-content:space-between;">
+                    <span>{{ item.name }}</span>
+                    <span>{{ item.score }}%</span>
+                </div>
+
+                <div class="bar-bg">
+                    <div class="bar-fill" style="width:{{ item.score }}%"></div>
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <!-- FOOTER -->
+    <div class="footer">
+        © 2026 DermAI - AI Skin Disease Detection System
+    </div>
+
+</div>
+
+</body>
+</html>

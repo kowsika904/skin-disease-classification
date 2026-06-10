@@ -1,0 +1,7 @@
+dataset/
+models/
+.vscode/
+__pycache__/
+*.h5
+*.csv
+*.jpg
